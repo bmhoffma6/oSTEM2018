@@ -1,23 +1,59 @@
 <!DOCTYPE HTML>
-<!--
-	Twenty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<!-- Delare plugin for jQuery chat library -->
+<script src="//code.jquery.com/jquery.min.js"></script>
+
+<!--Load jQuery convForm plugin's Javascript and CSS files in the doc -->
+<link rel="stylesheet" href="dist/jquery.convform.css">
+<script src="dist/jquery.convform.js"></script>
+
+<!-- Define the questions to ask the user-->
+<input type="text" name="name" conv-question="Question to ask">
+
+<!-- Define the chat box form-->
+<script>
+var convForm = $('.my_conv_form_wrapper').convform({
+	placeHolder : 'Type Here',
+	typeInputUi : 'textarea',
+	timeOutFirstQuestion : 1200,
+	buttonClassStyle : 'icon2-arrow',
+	eventList : {
+		onSumbitForm : function(convState) {
+			console.log('completed');
+			convState.form.submit();
+			return true;
+	},
+	onInputSubmit : function
+	(convState, readyCallback) {readyCallback()}
+},
+formIdName : 'convForm',
+inputIdName : 'userInput',
+loadSpinnerVisible : '', 
+buttonText : '▶'
+});
+</script>
+
 <html>
 	<head>
-		<title>Twenty by HTML5 UP</title>
+		<title>ArmadillX</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
+	<style>
+	div.fixed {
+		position : fixed;
+		bottom: 0;
+		right: 0;
+		width: 300px;
+	}
+	</style>
 	<body class="index is-preload">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<header id="header" class="alt">
-					<h1 id="logo"><a href="index.html">Twenty <span>by HTML5 UP</span></a></h1>
+					<h1 id="logo"><a href="index.html">ArmadillX <span>by Queerth Dimension</span></a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="current"><a href="index.html">Welcome</a></li>
@@ -57,22 +93,20 @@
 					<div class="inner">
 
 						<header>
-							<h2>TWENTY</h2>
+							<h2>ARMADILLX</h2>
 						</header>
-						<p>This is <strong>Twenty</strong>, a free
-						<br />
-						responsive template
-						<br />
-						by <a href="http://html5up.net">HTML5 UP</a>.</p>
-						<footer>
-							<ul class="buttons stacked">
-								<li><a href="#main" class="button fit scrolly">Tell Me More</a></li>
-							</ul>
-						</footer>
-
 					</div>
 
 				</section>
+
+				<div class="fixed">
+					<div id="chat" class="conv_form_wrapper">
+						<form action="" method="GET" class="hidden">
+							<select data-conv-question"Hi there! I'm Millie - type in a keyword and I'll bring up more information about it!" name="greeting">
+							</select>
+						</form>
+					</div>
+				</div>
 
 			<!-- Main -->
 				<article id="main">
